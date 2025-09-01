@@ -25,7 +25,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     edgeToEdgeEnabled: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-secure-store",
+      {
+        configureAndroidBackup: true,
+        faceIDPermission:
+          "Allow $(PRODUCT_NAME) to access your Face ID biometric data.",
+      },
+    ],
+  ],
   web: {
     favicon: "./assets/favicon.png",
   },
